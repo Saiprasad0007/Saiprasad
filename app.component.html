@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Todo List</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      <form class="d-flex">
+        <button
+          class="btn btn-outline-danger"
+          type="button"
+          (click)="Reset()">
+          Remove Task
+        </button>
+        <button
+          class="btn btn-outline-success"
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Add Task
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="myForm" (ngSubmit)="addtodo()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Enter Time ( In seconds )
+            </label>
+            <input
+              formControlName="Time"
+              type="number"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Enter Task</label
+            >
+            <input
+              autocomplete="off"
+              formControlName="task"
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item" *ngFor="let tm of time">
+    <b>Time : </b>{{ tm }} mili sec.
+  </li>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item" *ngFor="let ts of task">
+    <b>Task : </b>{{ ts }}
+  </li>
+</ul>
